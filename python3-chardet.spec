@@ -8,7 +8,7 @@ Summary:	Character encoding auto-detection in Python 3
 Summary(pl.UTF-8):	Automatyczne wykrywanie kodowania znaków w Pythonie 3
 Name:		python3-%{module}
 Version:	5.2.0
-Release:	2
+Release:	3
 License:	LGPL v2.1+
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/chardet/
@@ -30,6 +30,7 @@ BuildRequires:	sphinx-pdg-3
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 Requires:	python-modules >= 1:2.7
+Conflicts:	python-chardet < 4.0.0-7
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
