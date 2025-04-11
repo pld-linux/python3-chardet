@@ -17,7 +17,9 @@ Source0:	https://files.pythonhosted.org/packages/source/c/chardet/%{module}-%{ve
 Patch0:		failtest.patch
 URL:		https://pypi.org/project/chardet/
 BuildRequires:	python3 >= 1:3.7
+BuildRequires:	python3-build
 BuildRequires:	python3-devel >= 1:3.7
+BuildRequires:	python3-installer
 BuildRequires:	python3-setuptools
 %if %{with tests}
 BuildRequires:	python3-hypothesis
@@ -28,7 +30,7 @@ BuildRequires:	python3-sphinx_rtd_theme
 BuildRequires:	sphinx-pdg-3
 %endif
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.714
+BuildRequires:	rpmbuild(macros) >= 2.044
 Requires:	python3-modules >= 1:3.7
 Conflicts:	python-chardet < 4.0.0-7
 BuildArch:	noarch
@@ -56,14 +58,8 @@ Dokumentacja API modułu Pythona chardet.
 %setup -q -n %{module}-%{version}
 %patch -P 0 -p1
 
-cat > setup.py <<EOF
-#!%{_bindir}/python3
-from setuptools import setup
-setup()
-EOF
-
 %build
-%py3_build
+%py3_build_pyproject
 
 %if %{with tests}
 %{__python3} -m pytest test.py
@@ -78,9 +74,7 @@ PYTHONPATH=$(pwd) \
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%py3_install
-
-%py_postclean
+%py3_install_pyproject
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -90,7 +84,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README.rst
 %attr(755,root,root) %{_bindir}/chardetect
 %{py3_sitescriptdir}/chardet
-%{py3_sitescriptdir}/chardet-%{version}-py*.egg-info
+%{py3_sitescriptdir}/chardet-%{version}.dist-info
 
 %if %{with doc}
 %files apidocs
