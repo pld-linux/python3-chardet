@@ -24,11 +24,12 @@ BuildRequires:	python3-installer
 %if %{with tests}
 BuildRequires:	python3-hypothesis
 BuildRequires:	python3-pytest
+# >= 9.0.2 when available in PLD
 %endif
 %if %{with doc}
-BuildRequires:	python3-furo
-BuildRequires:	python3-sphinx_copybutton
-BuildRequires:	sphinx-pdg-3
+BuildRequires:	python3-furo >= 2024.1.29
+BuildRequires:	python3-sphinx_copybutton >= 0.5.2
+BuildRequires:	sphinx-pdg-3 >= 8.0
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 2.044
@@ -82,7 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.md
+%doc LICENSE README.md
 %attr(755,root,root) %{_bindir}/chardetect
 %{py3_sitescriptdir}/chardet
 %{py3_sitescriptdir}/chardet-%{version}.dist-info
@@ -90,5 +91,5 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with doc}
 %files apidocs
 %defattr(644,root,root,755)
-%doc docs/_build/html/{_modules,_static,api,*.html,*.js}
+%doc docs/_build/html/{_static,api,*.html,*.js}
 %endif
