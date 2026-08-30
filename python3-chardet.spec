@@ -22,7 +22,6 @@ BuildRequires:	python3-hatchling
 BuildRequires:	python3-hatch-vcs
 BuildRequires:	python3-installer
 %if %{with tests}
-BuildRequires:	python3-hypothesis
 BuildRequires:	python3-pytest >= 9.0.2
 %endif
 %if %{with doc}
