@@ -7,13 +7,13 @@
 Summary:	Character encoding auto-detection in Python 3
 Summary(pl.UTF-8):	Automatyczne wykrywanie kodowania znaków w Pythonie 3
 Name:		python3-%{module}
-Version:	7.6.0
+Version:	7.7.0
 Release:	1
 License:	0BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/chardet/
 Source0:	https://files.pythonhosted.org/packages/source/c/chardet/%{module}-%{version}.tar.gz
-# Source0-md5:	728517f43e9a435a3239d60d1ab35270
+# Source0-md5:	00b60e5cf4156308dea5b742a89e31de
 URL:		https://pypi.org/project/chardet/
 BuildRequires:	python3 >= 1:3.10
 BuildRequires:	python3-build
